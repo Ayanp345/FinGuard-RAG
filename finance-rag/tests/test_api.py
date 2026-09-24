@@ -1,11 +1,3 @@
-"""
-API-level tests.
-
-`AppState.load` normally downloads/loads embedding, reranker, NLI and LLM
-models — far too heavy for a unit test. We patch it to install a stub
-pipeline instead, so these tests exercise routing, auth, caching and
-response shaping without needing any model weights or network access.
-"""
 from __future__ import annotations
 
 from unittest.mock import AsyncMock, patch
