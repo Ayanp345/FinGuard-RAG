@@ -1,9 +1,3 @@
-"""
-Shared dataclasses / pydantic models used across the pipeline.
-
-Keeping these in one module avoids circular imports between
-ingestion -> retrieval -> generation -> evaluation.
-"""
 from __future__ import annotations
 
 from enum import Enum
