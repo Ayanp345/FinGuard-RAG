@@ -1,15 +1,3 @@
-"""
-End-to-end RAG pipeline: classify -> retrieve -> rerank -> generate ->
-extract citations -> check faithfulness.
-
-The one piece of real "reasoning" beyond a linear RAG chain: comparative
-queries ("HDFC vs ICICI") are multi-hop by nature. A single embedding of
-the whole query tends to retrieve chunks about whichever entity is
-lexically dominant and starves the other one. When the classifier detects
-a comparative query, the pipeline extracts the entities, retrieves
-*separately* per entity, and unions the results before reranking — so both
-sides of the comparison actually get grounded context.
-"""
 from __future__ import annotations
 
 import logging
