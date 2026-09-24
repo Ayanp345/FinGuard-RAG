@@ -1,18 +1,3 @@
-"""
-Bootstrap CANDIDATE eval Q&A pairs from the indexed corpus for a human to
-review and correct — this does NOT produce a trustworthy ground-truth set
-on its own. Using un-reviewed LLM-generated pairs as ground truth would let
-the same model's biases grade its own homework.
-
-Usage:
-    python -m scripts.generate_eval_set --n 100 --out data/eval/eval_qa_candidates.jsonl
-
-Workflow:
-    1. Run this script to get candidates.
-    2. Open the output file and manually correct/verify each `reference_answer`
-       and `relevant_chunk_ids` against the actual source PDF.
-    3. Save the reviewed file as data/eval/eval_qa.jsonl (consumed by run_eval.py).
-"""
 from __future__ import annotations
 
 import argparse
