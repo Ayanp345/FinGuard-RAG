@@ -1,10 +1,3 @@
-"""
-Streamlit frontend for the Finance RAG API.
-
-Run with: streamlit run frontend/app.py
-Configure the backend URL via the FINANCE_RAG_API_URL env var (defaults to
-localhost, which matches the docker-compose service network).
-"""
 from __future__ import annotations
 
 import os
