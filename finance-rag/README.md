@@ -316,39 +316,3 @@ every push.
   `DEVICE=cuda`. This matters most if `LLM_BACKEND=hf_local` — the retrieval
   models (embedding/reranker/NLI) are small enough to run acceptably on CPU.
 
-## 6. Known limitations (be upfront about these — a resume line that oversells
-   a demo is worse than an honest one)
-
-- No OCR: scanned/image-only PDFs will parse as empty text. Add a step
-  (e.g. `pytesseract`) in `pdf_parser.py` if your source documents need it.
-- The entity extractor for comparative queries (`query_classifier.py`) is a
-  capitalization-based regex heuristic, not real NER — it works for
-  well-capitalized company names but will miss lowercase mentions or
-  abbreviations like "HDFCB". Swap in spaCy + a finance gazetteer for
-  production robustness.
-- `HFLocalClient` runs generation synchronously per request inside a thread;
-  it is not batched, so local-backend throughput under concurrent load will
-  be far lower than the API backends. Put a request queue in front of it
-  (e.g. via vLLM or TGI) before treating it as production-ready for that
-  case.
-- The Redis cache keys purely on the normalized query string — it will cache-hit
-  on a rephrased question that means something different only if the strings
-  happen to match, and will *not* cache-hit on paraphrases of the same
-  question. That's a deliberate simplicity/safety tradeoff, not a bug: a
-  semantic cache risks serving a cached answer for a subtly different
-  question.
-
-## 7. Suggested resume line
-
-> Built and deployed a product25 + dense, fused viion RAG system for Indian financial document
-> analysis, featuring hybrid retrieval (BMa Reciprocal
-> Rank Fusion), cross-encoder reranking, multi-hop retrieval for comparative
-> queries, and NLI-based hallucination detection with per-claim citation
-> verification. Evaluated against a 100-question human-verified benchmark
-> across retrieval (Recall@5/MRR), faithfulness, relevance and correctness,
-> showing a measurable improvement over naive single-vector RAG. Deployed via
-> FastAPI + Redis caching + Docker, with pluggable self-hosted (Llama-3.1-8B)
-> or hosted (Claude/GPT-4o) generation backends.
-
-Fill in the actual numbers from your own `data/eval/report.json` before using
-this — don't quote metrics you haven't actually measured.
