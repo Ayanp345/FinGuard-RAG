@@ -1,20 +1,3 @@
-"""
-Downloader for a *curated* list of source documents.
-
-Important: this deliberately does NOT crawl nseindia.com / bseindia.com /
-rbi.org.in / sebi.gov.in automatically. Those sites have bot-protection and
-usage terms that change, and blindly crawling them is a good way to get an
-IP banned or breach their terms of use. Instead:
-
-  1. You browse the sites yourself and collect direct PDF URLs (or the
-     report's landing page URL) into `data/sources.yaml`.
-  2. This module downloads exactly those URLs, politely: one worker,
-     a delay between requests, a descriptive User-Agent, and it respects
-     robots.txt via `urllib.robotparser` before fetching anything.
-
-This keeps ingestion reproducible (the yaml file *is* your dataset
-manifest) while staying on the right side of each site's terms.
-"""
 from __future__ import annotations
 
 import logging
