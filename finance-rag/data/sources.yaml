@@ -1,0 +1,34 @@
+# Curated manifest of source documents.
+#
+# Fill this in yourself by browsing the sites below and copying direct PDF
+# links (right-click -> copy link) — see src/ingestion/scrapers.py for why
+# this project deliberately doesn't auto-crawl these sites.
+#
+#   Annual reports : https://www.nseindia.com  /  https://www.bseindia.com
+#                     (or directly from each company's investor-relations page)
+#   RBI circulars   : https://www.rbi.org.in/Scripts/BS_CircularIndexDisplay.aspx
+#   SEBI regulations: https://www.sebi.gov.in/legal/regulations.html
+#   Union Budget    : https://www.indiabudget.gov.in
+#
+# Each entry becomes data/raw/<name>.pdf when downloaded via:
+#   python -m src.ingestion.scrapers --manifest data/sources.yaml --out data/raw
+
+annual_report:
+  - name: TCS_Annual_Report_FY2024
+    url: "https://example.com/replace-with-real-tcs-annual-report-url.pdf"
+  - name: Infosys_Annual_Report_FY2024
+    url: "https://example.com/replace-with-real-infosys-annual-report-url.pdf"
+  - name: HDFC_Bank_Annual_Report_FY2024
+    url: "https://example.com/replace-with-real-hdfc-annual-report-url.pdf"
+
+rbi_circular:
+  - name: RBI_NPA_Classification_Circular_2024
+    url: "https://example.com/replace-with-real-rbi-circular-url.pdf"
+
+sebi_regulation:
+  - name: SEBI_LODR_Regulations_2024
+    url: "https://example.com/replace-with-real-sebi-regulation-url.pdf"
+
+budget_document:
+  - name: Union_Budget_Speech_2024_25
+    url: "https://example.com/replace-with-real-budget-speech-url.pdf"

@@ -1,0 +1,42 @@
+# --- API ---------------------------------------------------------------
+fastapi>=0.115
+uvicorn[standard]>=0.30
+pydantic>=2.7
+pydantic-settings>=2.3
+slowapi>=0.1.9
+python-multipart>=0.0.9
+
+# --- Retrieval -----------------------------------------------------------
+sentence-transformers>=3.0
+faiss-cpu>=1.8
+rank-bm25>=0.2.2
+tiktoken>=0.7
+
+# --- Generation / LLM backends -------------------------------------------
+transformers>=4.42
+torch>=2.3
+accelerate>=0.31
+anthropic>=0.34        # only required if LLM_BACKEND=anthropic
+openai>=1.35            # only required if LLM_BACKEND=openai
+tenacity>=8.3
+
+# --- Ingestion -------------------------------------------------------------
+pdfplumber>=0.11
+pyyaml>=6.0
+requests>=2.32
+
+# --- Caching (optional) ----------------------------------------------------
+redis>=5.0
+
+# --- Frontend --------------------------------------------------------------
+streamlit>=1.36
+
+# --- Evaluation / numerics ---------------------------------------------------
+numpy>=1.26
+pandas>=2.2
+
+# --- Dev / testing -----------------------------------------------------------
+pytest>=8.2
+pytest-asyncio>=0.23
+httpx>=0.27
+ruff>=0.5
