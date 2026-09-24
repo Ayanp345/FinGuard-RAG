@@ -1,16 +1,3 @@
-"""
-NLI-based hallucination detection.
-
-String-matching ("does the number in the claim appear in the chunk") is
-what the original naive plan used, and it's easy to fool: a claim can be
-lexically grounded but semantically wrong ("revenue grew" vs "revenue fell"
-both contain the word "revenue" and a percentage). Instead, each (chunk,
-claim) pair is scored by a cross-encoder NLI model treating the chunk as
-the premise and the claim as the hypothesis. The label of interest is
-`entailment`: does the source text actually entail the claim? Contradiction
-or neutral both mean the claim isn't supported, even if it shares
-vocabulary with the source.
-"""
 from __future__ import annotations
 
 import numpy as np
