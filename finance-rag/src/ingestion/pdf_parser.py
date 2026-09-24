@@ -1,14 +1,3 @@
-"""
-PDF -> structured page records.
-
-Financial documents are table-heavy (balance sheets, ratio tables, circular
-annexures). A naive `page.extract_text()` call flattens tables into
-unreadable text soup, which is exactly what breaks most "ChatPDF" clones on
-this domain. So we extract text and tables *separately* per page and keep
-tables as their own markdown-formatted blocks, tagged as ChunkType.TABLE,
-so the chunker never splits them and the retriever can match on their
-numbers directly.
-"""
 from __future__ import annotations
 
 import logging
