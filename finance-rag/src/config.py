@@ -1,9 +1,3 @@
-"""
-Central configuration for the whole system.
-
-Everything is overridable via environment variables / a `.env` file so the
-same code runs unchanged in local dev, Docker, and a cloud deployment.
-"""
 from __future__ import annotations
 
 from functools import lru_cache
