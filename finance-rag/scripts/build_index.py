@@ -1,9 +1,3 @@
-"""
-Ingest raw PDFs -> parse -> chunk -> embed -> build FAISS + BM25 indices.
-
-Usage:
-    python -m scripts.build_index --raw-dir data/raw --index-dir data/index
-"""
 from __future__ import annotations
 
 import argparse
