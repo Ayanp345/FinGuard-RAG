@@ -1,5 +1,3 @@
-"""Prompt templates. Kept as plain functions (not a template engine) so the
-exact string sent to the model is easy to log, diff, and eval against."""
 from __future__ import annotations
 
 from src.models import RetrievedChunk
