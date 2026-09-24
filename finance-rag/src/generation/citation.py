@@ -1,15 +1,3 @@
-"""
-Turn the LLM's raw {"answer", "claims": [...]} JSON into validated Citation
-objects.
-
-Critically, this step never trusts the model's cited chunk_id at face value:
-a model can (and small/quantized models especially will) invent a chunk_id
-that was never actually retrieved. Every citation is cross-checked against
-the set of chunk_ids that were genuinely handed to the generator; anything
-else is dropped and the claim is marked as uncited, which the hallucination
-checker downstream will then correctly flag as unsupported rather than
-silently trusting a fabricated source.
-"""
 from __future__ import annotations
 
 import logging
