@@ -1,16 +1,3 @@
-"""
-Answer relevance: does the answer actually address the question asked?
-
-Faithfulness (hallucination_checker.py) tells you whether claims are
-grounded in the retrieved context; it says nothing about whether the model
-answered a *different, easier* question than the one asked (a common
-failure mode when retrieved context is thin). This metric follows the
-RAGAS approach: ask the generator to produce N plausible questions that
-the answer *does* address, then score relevance as the mean cosine
-similarity between the original question and those reverse-engineered
-questions. A model that answered off-topic will generate reverse questions
-that drift from the original.
-"""
 from __future__ import annotations
 
 import numpy as np
