@@ -1,21 +1,3 @@
-"""
-LLM client abstraction.
-
-The original plan hard-wires generation to a locally-hosted Llama-3.1-8B.
-That's a fine default (free, no external dependency, matches the "fully
-self-hosted" resume story) but an 8B open model is noticeably worse than
-a hosted frontier model at reliably emitting the strict JSON-with-citations
-schema this system depends on for its hallucination checker to work at all.
-
-So generation sits behind one `LLMClient` interface with three
-interchangeable backends, chosen via `settings.llm_backend`:
-
-  - "hf_local"  : transformers pipeline, runs entirely offline
-  - "anthropic" : Anthropic Messages API (needs ANTHROPIC_API_KEY)
-  - "openai"    : OpenAI chat completions (needs OPENAI_API_KEY)
-
-Swap backends with one env var; nothing else in the pipeline changes.
-"""
 from __future__ import annotations
 
 import abc
