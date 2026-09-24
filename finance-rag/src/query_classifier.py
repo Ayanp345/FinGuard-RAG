@@ -1,19 +1,3 @@
-"""
-Query classification.
-
-A keyword-rule classifier ("contains 'compare' -> analytical") is brittle
-and doesn't generalize. Instead this embeds a small, hand-labeled set of
-exemplar queries per class once at startup, embeds the incoming query with
-the same encoder used for retrieval, and assigns the label of the nearest
-centroid. This is a legitimate few-shot semantic classifier that costs one
-extra embedding call per query and needs no training loop or labeled
-dataset beyond the exemplars below — extend `EXEMPLARS` as you see
-misclassifications in production logs.
-
-Comparative queries ("HDFC vs ICICI", "compare X and Y") additionally get
-their entities extracted so the pipeline can retrieve per-entity instead of
-hoping one query embedding covers both companies (see src/pipeline.py).
-"""
 from __future__ import annotations
 
 import re
