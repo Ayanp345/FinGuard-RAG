@@ -1,16 +1,3 @@
-"""
-FastAPI backend.
-
-Notes on the streaming endpoint: the generator is required to emit one
-strict JSON object (answer + per-claim citations) so the hallucination
-checker has something well-formed to validate — token-by-token streaming
-of a JSON blob is fragile to parse safely mid-stream. Instead
-`/query/stream` streams *pipeline stage* progress (classifying -> retrieving
--> reranking -> generating -> verifying) as Server-Sent Events, then emits
-the final validated answer as the last event. This gives real perceived-
-latency benefit (a user sees progress within ~100ms instead of waiting the
-full 1-3s round trip) without sacrificing citation integrity.
-"""
 from __future__ import annotations
 
 import json
