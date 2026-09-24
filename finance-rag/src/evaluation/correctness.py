@@ -1,13 +1,3 @@
-"""Answer correctness via LLM-as-judge against a human-verified reference answer.
-
-Deliberately kept separate from `relevance.py` (on-topic-ness) and the NLI
-faithfulness score (groundedness) — an answer can be on-topic and fully
-grounded in retrieved text while still being *wrong* if the retrieved chunk
-itself doesn't contain the figure the question asked for and the model
-plausibly filled the gap. Correctness needs a ground-truth reference and is
-therefore the most expensive metric to collect (requires the manually
-curated Q&A set from scripts/generate_eval_set.py).
-"""
 from __future__ import annotations
 
 import logging
