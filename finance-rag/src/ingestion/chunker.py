@@ -1,20 +1,3 @@
-"""
-Chunking strategy.
-
-Three things make this more robust than a plain fixed-width splitter for
-financial text:
-
-1. Table chunks are never split — a balance sheet table split across two
-   chunks is worse than useless for retrieval, since neither half is
-   self-contained.
-2. Splitting happens on a paragraph -> sentence -> word cascade, so we never
-   cut a sentence (and therefore never cut a number mid-figure, e.g.
-   "Rs. 1,23,456" or "12.5%") unless a single sentence alone exceeds the
-   chunk budget.
-3. Overlap is measured in tokens, not characters, so it behaves consistently
-   across the short, number-dense sentences typical of financial disclosure
-   text.
-"""
 from __future__ import annotations
 
 import re
