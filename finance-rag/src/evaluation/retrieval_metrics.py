@@ -1,9 +1,3 @@
-"""Standard IR metrics for judging the retriever independently of generation.
-
-Run these against a small hand-labeled (query -> relevant chunk_ids) set
-*before* touching the generator — if retrieval recall is bad, no amount of
-prompt engineering downstream will fix answer quality.
-"""
 from __future__ import annotations
 
 import math
