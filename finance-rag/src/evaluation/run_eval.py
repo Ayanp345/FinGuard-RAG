@@ -1,22 +1,3 @@
-"""
-Evaluation harness.
-
-Usage:
-    python -m src.evaluation.run_eval --eval-set data/eval/eval_qa.jsonl \
-        --index-dir data/index --out data/eval/report.json
-
-Expects each line of the eval set to be a JSON object:
-    {"question": "...", "reference_answer": "...", "relevant_chunk_ids": ["...", ...]}
-
-`relevant_chunk_ids` is used for retrieval metrics (recall/precision/MRR/nDCG)
-and must be hand-labeled — see scripts/generate_eval_set.py for a helper that
-bootstraps candidates for you to review, not a substitute for review.
-
-Three conditions are compared, matching the original project's ask:
-  - no_rag:   the LLM answers from parametric knowledge alone (no context)
-  - naive_rag: single dense-retrieval hit, no reranking, no citation checking
-  - full_pipeline: hybrid retrieval + RRF + rerank + citations + NLI check
-"""
 from __future__ import annotations
 
 import argparse
